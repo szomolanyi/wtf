@@ -1,3 +1,42 @@
+nav {
+  position: fixed;
+  background-color : transparent;
+}
+.first {
+  background-image: url('../img/orez.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  /*width: 800px;*/
+  height: 800px;
+}
+.second {
+  margin-left: 150px;
+}
 h1 {
-    background-color: red
+  background-color: green;
+}
+li {
+  margin-bottom: 50px;
+  list-style-type: none;
+}
+body {
+  margin: 0;
+}
+i {
+  font-size: 40px;
+}
+a:hover {
+    text-decoration: underline;
+}
+.wtfnav__link {
+  text-decoration: none;
+}
+.wtfnav__link--transition {
+  transition: color 0.5s ease-in;
+}
+.wtfnav__link--black {
+  color: black;
+}
+.wtfnav__link--white {
+  color: white;
 }

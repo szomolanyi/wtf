@@ -4,8 +4,8 @@
   "description": "Base repository for FE projects",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack",
-    "devserver": "webpack-dev-server"
+    "build": "webpack",
+    "devserver": "webpack-dev-server --progress --colors --content-base build/"
   },
   "author": "Robert Szomolanyi",
   "license": "BSD-2-Clause",
@@ -16,6 +16,7 @@
     "css-loader": "~0.26.1",
     "eslint": "^3.11.1",
     "eslint-loader": "~1.6.1",
+    "file-loader": "^0.10.1",
     "gulp": "~3.9.1",
     "gulp-util": "~3.0.7",
     "gulp-webserver": "~0.9.1",

@@ -4,7 +4,8 @@ module.exports = {
     devtool: "source-map",
     entry: "./src/index.js",  //náš vstupní bod aplikace
     output: {
-        filename: "bundle.js"   //výstupní balík všech zdrojových kódů
+        filename: "bundle.js",   //výstupní balík všech zdrojových kódů
+        path: "build"
     },
     module: { //sem budeme zanedlouho vkládat transformační moduly
         loaders : [
@@ -17,6 +18,14 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loaders: ['eslint-loader', 'babel-loader?presets[]=es2015']
+            },
+            {
+              test: /\.(jpe?g|png|gif|svg)$/i,
+              exclude: /node_modules/,
+              loader: 'file-loader?name=[name].[ext]',
+              /*options: {
+                name: '[name].[ext]',
+              }*/
             }
         ]
     },
