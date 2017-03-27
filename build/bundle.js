@@ -58,7 +58,7 @@
 	};
 	
 	function wtf_init_nav(initial_color) {
-	  wtf_nav_state.lookbook_pos = $(".wtflookbook").offset().top;
+	  wtf_nav_state.lookbook_pos = $("#wtfid_lookbook").offset().top;
 	  $(".wtfnav__link").each(function (i, e) {
 	    $('#' + e.id).addClass('wtfnav__link--' + initial_color);
 	    wtf_nav_state.nav_elements.push({
@@ -86,25 +86,31 @@
 	  });
 	}
 	
+	function wtf_to_lookbook() {
+	  $('html, body').animate({
+	    scrollTop: $("#wtfid_lookbook").offset().top
+	  }, 1000);
+	}
+	
+	function wtf_to_top() {
+	  $('html, body').animate({
+	    scrollTop: 0
+	  }, 1000);
+	}
+	
 	// Main app
 	$(document).ready(function () {
-	  $('#wtfid_lookbook_nav').on('click', function () {
-	    console.log($(".wtflookbook").offset());
-	    $('html, body').animate({
-	      scrollTop: $(".wtflookbook").offset().top
-	    }, 1000);
-	  });
-	  $('#wtfid_home_nav').on('click', function () {
-	    $('html, body').animate({
-	      scrollTop: 0
-	    }, 1000);
-	  });
-	  wtf_init_nav('white');
-	  console.log($(location).attr('href'));
-	});
-	
-	$(document).scroll(function () {
-	  wtf_update_nav();
+	  $('#wtfid_lookbook_nav').on('click', wtf_to_lookbook);
+	  $('#wtfid_home_nav').on('click', wtf_to_top);
+	  $('#wtfid_lookbook_nav1').on('click', wtf_to_lookbook);
+	  $('#wtfid_home_nav1').on('click', wtf_to_top);
+	  console.log($(location).attr('pathname'));
+	  if ($(location).attr('pathname') === '/') {
+	    wtf_init_nav('white');
+	    $(document).scroll(function () {
+	      wtf_update_nav();
+	    });
+	  }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -10402,7 +10408,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtfhome {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center;\n  background-repeat: no-repeat;\n  height: 800px;\n}\n.wtflookbook {\n  margin-left: 150px;\n}\n.wtfnav__item {\n  margin-bottom: 50px;\n  list-style-type: none;\n}\nbody {\n  margin: 0;\n}\ni {\n  font-size: 40px;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n", ""]);
+	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtfhome {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center;\n  background-repeat: no-repeat;\n  height: 800px;\n}\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n  justify-content: space-between;\n}\n.wtfnav__item {\n  margin-bottom: 50px;\n  list-style-type: none;\n  margin-right: 20px;\n}\nbody {\n  margin: 0;\n}\ni {\n  font-size: 40px;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n", ""]);
 	
 	// exports
 
