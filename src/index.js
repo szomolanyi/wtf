@@ -11,7 +11,7 @@ let wtf_nav_state={
 };
 
 function wtf_init_nav(initial_color) {
-  wtf_nav_state.lookbook_pos = $(".wtflookbook").offset().top;
+  wtf_nav_state.lookbook_pos = $("#wtfid_lookbook").offset().top;
   $(".wtfnav__link").each( (i, e) => {
     $('#'+e.id).addClass('wtfnav__link--'+ initial_color);
     wtf_nav_state.nav_elements.push({
@@ -40,23 +40,29 @@ function wtf_update_nav() {
   });
 }
 
+function wtf_to_lookbook() {
+  $('html, body').animate({
+      scrollTop: $("#wtfid_lookbook").offset().top
+  }, 1000);
+}
+
+function wtf_to_top() {
+  $('html, body').animate({
+      scrollTop: 0
+  }, 1000);
+}
+
 // Main app
 $(document).ready(function () {
-  $('#wtfid_lookbook_nav').on('click', function() {
-    console.log($(".wtflookbook").offset());
-    $('html, body').animate({
-        scrollTop: $(".wtflookbook").offset().top
-    }, 1000);
-  });
-  $('#wtfid_home_nav').on('click', function() {
-    $('html, body').animate({
-        scrollTop: 0
-    }, 1000);
-  });
-  wtf_init_nav('white');
-  console.log($(location).attr('href'));
-});
-
-$(document).scroll(function(){
-  wtf_update_nav();
+  $('#wtfid_lookbook_nav').on('click', wtf_to_lookbook);
+  $('#wtfid_home_nav').on('click', wtf_to_top);
+  $('#wtfid_lookbook_nav1').on('click', wtf_to_lookbook);
+  $('#wtfid_home_nav1').on('click', wtf_to_top);
+  console.log($(location).attr('pathname'));
+  if ($(location).attr('pathname') === '/') {
+    wtf_init_nav('white');
+    $(document).scroll(function(){
+      wtf_update_nav();
+    });
+  }
 });

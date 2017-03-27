@@ -10,12 +10,17 @@
   background-repeat: no-repeat;
   height: 800px;
 }
-.wtflookbook {
+.wtflookbook--v1 {
   margin-left: 150px;
+}
+.wtflookbook--v2 {
+  display: flex;
+  justify-content: space-between;
 }
 .wtfnav__item {
   margin-bottom: 50px;
   list-style-type: none;
+  margin-right: 20px;
 }
 body {
   margin: 0;
