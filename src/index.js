@@ -6,12 +6,12 @@ require("jquery");
 
 let wtf_nav_state={
   nav_elements : [],
-  second_pos : 0,
+  lookbook_pos : 0,
   bulhar: 20
 };
 
 function wtf_init_nav(initial_color) {
-  wtf_nav_state.second_pos = $(".second").offset().top;
+  wtf_nav_state.lookbook_pos = $(".wtflookbook").offset().top;
   $(".wtfnav__link").each( (i, e) => {
     $('#'+e.id).addClass('wtfnav__link--'+ initial_color);
     wtf_nav_state.nav_elements.push({
@@ -27,12 +27,12 @@ function wtf_init_nav(initial_color) {
 function wtf_update_nav() {
   let curr_pos = $(document).scrollTop();
   wtf_nav_state.nav_elements.forEach((e)=>{
-    if (e.color === 'white' && curr_pos + wtf_nav_state.bulhar > wtf_nav_state.second_pos - e.pos) {
+    if (e.color === 'white' && curr_pos + wtf_nav_state.bulhar > wtf_nav_state.lookbook_pos - e.pos) {
       e.elem.addClass('wtfnav__link--black');
       e.elem.removeClass('wtfnav__link--white');
       e.color='black';
     }
-    else if (e.color === 'black' && curr_pos + wtf_nav_state.bulhar <= wtf_nav_state.second_pos - e.pos )  {
+    else if (e.color === 'black' && curr_pos + wtf_nav_state.bulhar <= wtf_nav_state.lookbook_pos - e.pos )  {
       e.elem.removeClass('wtfnav__link--black');
       e.elem.addClass('wtfnav__link--white');
       e.color='white';
@@ -43,9 +43,9 @@ function wtf_update_nav() {
 // Main app
 $(document).ready(function () {
   $('#wtfid_lookbook_nav').on('click', function() {
-    console.log($(".second").offset());
+    console.log($(".wtflookbook").offset());
     $('html, body').animate({
-        scrollTop: $(".second").offset().top
+        scrollTop: $(".wtflookbook").offset().top
     }, 1000);
   });
   $('#wtfid_home_nav').on('click', function() {

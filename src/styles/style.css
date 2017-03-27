@@ -1,21 +1,19 @@
-nav {
-  position: fixed;
+.wtfnav {
   background-color : transparent;
 }
-.first {
+.wtfnav--fixed {
+  position: fixed;
+}
+.wtfhome {
   background-image: url('../img/orez.png');
   background-position: center;
   background-repeat: no-repeat;
-  /*width: 800px;*/
   height: 800px;
 }
-.second {
+.wtflookbook {
   margin-left: 150px;
 }
-h1 {
-  background-color: green;
-}
-li {
+.wtfnav__item {
   margin-bottom: 50px;
   list-style-type: none;
 }
