@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "devserver": "webpack-dev-server --progress --colors --content-base build/"
+    "devserver": "webpack-dev-server --progress --colors --content-base build/",
+    "gh" : "git subtree push --prefix build origin gh-pages"
   },
   "author": "Robert Szomolanyi",
   "license": "BSD-2-Clause",
