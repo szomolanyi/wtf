@@ -105,7 +105,7 @@
 	  $('#wtfid_lookbook_nav1').on('click', wtf_to_lookbook);
 	  $('#wtfid_home_nav1').on('click', wtf_to_top);
 	  console.log($(location).attr('pathname'));
-	  if ($(location).attr('pathname') === '/') {
+	  if (!$(location).attr('pathname').endsWith('/index2.html')) {
 	    wtf_init_nav('white');
 	    $(document).scroll(function () {
 	      wtf_update_nav();
