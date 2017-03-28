@@ -15,7 +15,6 @@
 }
 .wtflookbook--v2 {
   display: flex;
-  justify-content: space-between;
 }
 .wtfnav__item {
   padding-bottom: 25px;
