@@ -49,7 +49,7 @@
 	/*jshint esversion:6*/
 	
 	__webpack_require__(2);
-	__webpack_require__(1);
+	//require("jquery");
 	//require("jquerymobile-swipeupdown");
 	__webpack_require__(7);
 	__webpack_require__(8);
