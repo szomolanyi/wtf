@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
 
 require("./styles/style.css");
-//require("jquery");
+require("jquery");
 //require("jquerymobile-swipeupdown");
 require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
@@ -148,6 +148,11 @@ $(document).ready(function(){
     } else {
       wtfhome.scroll_up();
     }
+  });
+  $(document).on('scroll', function(e) {
+    console.log('scroll');
+    console.log(e);
+    e.originalEvent.preventDefault();
   });
   $(document).on("swipeleft",function(){
     console.log('swipeleft');

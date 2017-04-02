@@ -30,7 +30,7 @@ ul {
 }
 body {
   margin:0;
-  overflow: hidden;
+  /*overflow: hidden;*/
   font-family: 'Montserrat', sans-serif !important;
 }
 i {
@@ -63,7 +63,7 @@ a:hover {
   height: 100vh;
   position: absolute;
   transition: top 400ms ease-in-out;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .wtfscreen--show {
   top: 0;
