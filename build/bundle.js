@@ -218,6 +218,10 @@
 	    $(document).on("scrollstop", function () {
 	        console.log("Stopped scrolling!");
 	    });
+	    $('.wtfscreen').on("swipe", function () {
+	        console.log('swipe');
+	        wtfhome.scroll_down();
+	    });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
