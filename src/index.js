@@ -7,7 +7,7 @@ require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
 require("./assets/logo.png");
 
-(function () {
+/*(function () {
 // initializes touch and scroll events
     var supportTouch = $.support.touch,
         scrollEvent = "touchmove scroll",
@@ -91,7 +91,7 @@ require("./assets/logo.png");
     });
 
 })();
-
+*/
 
 let wtfhome = {
   screens_lists : [
@@ -149,20 +149,26 @@ $(document).ready(function(){
       wtfhome.scroll_up();
     }
   });
-  $("body").on("swipeleft",function(){
+  $(document).on("swipeleft",function(){
     console.log('swipeleft');
     wtfhome.scroll_down();
   });
-  $("body").on("swiperight",function(){
+  $(document).on("swiperight",function(){
     console.log('swiperight');
     wtfhome.scroll_up();
   });
-  $("body").on("swipeup",function(){
+  $(document).on("swipeup",function(){
     console.log('swipeup');
     wtfhome.scroll_up();
   });
-  $("body").on("swipedown",function(){
+  $(document).on("swipedown",function(){
     console.log('swipedown');
     wtfhome.scroll_down();
+  });
+  $(document).on("scrollstart",function(){
+    console.log("Started scrolling!");
+  });
+  $(document).on("scrollstop",function(){
+    console.log("Stopped scrolling!");
   });
 });
