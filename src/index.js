@@ -171,4 +171,8 @@ $(document).ready(function(){
   $(document).on("scrollstop",function(){
     console.log("Stopped scrolling!");
   });
+  $('.wtfscreen').on("swipe",function(){
+    console.log('swipe');
+    wtfhome.scroll_down();
+  });
 });
