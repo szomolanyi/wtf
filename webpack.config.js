@@ -11,8 +11,8 @@ module.exports = {
         loaders : [
             {
                 test: /.css$/,
-                loader: "style!css",
-                exclude: "node_modules"
+                loader: "style!css"
+                //exclude: "node_modules"
             },
             {
                 test: /\.js$/,
@@ -23,10 +23,8 @@ module.exports = {
               test: /\.(jpe?g|png|gif|svg)$/i,
               exclude: /node_modules/,
               loader: 'file-loader?name=[name].[ext]',
-              /*options: {
-                name: '[name].[ext]',
-              }*/
-            }
+            },
+            //{ test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
         ]
     },
     plugins: [

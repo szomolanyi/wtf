@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "devserver": "webpack-dev-server --progress --colors --content-base build/",
-    "gh" : "git subtree push --prefix build origin gh-pages"
+    "gh": "git subtree push --prefix build origin gh-pages"
   },
   "author": "Robert Szomolanyi",
   "license": "BSD-2-Clause",
@@ -21,7 +21,10 @@
     "gulp": "~3.9.1",
     "gulp-util": "~3.0.7",
     "gulp-webserver": "~0.9.1",
+    "html-loader": "^0.4.5",
+    "material-design-lite": "^1.3.0",
     "style-loader": "~0.13.1",
+    "url-loader": "^0.5.8",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
