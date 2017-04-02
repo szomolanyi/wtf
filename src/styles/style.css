@@ -75,7 +75,7 @@ a:hover {
   top: 100vh;
 }
 .wtfscreen--bgimg {
-  background-image: url('foto.jpg');
+  background-image: url('../assets/foto.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
