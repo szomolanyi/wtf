@@ -55,8 +55,8 @@
 	__webpack_require__(8);
 	__webpack_require__(10);
 	
-	(function () {
-	    // initializes touch and scroll events
+	/*(function () {
+	// initializes touch and scroll events
 	    var supportTouch = $.support.touch,
 	        scrollEvent = "touchmove scroll",
 	        touchStartEvent = supportTouch ? "touchstart" : "mousedown",
@@ -65,17 +65,19 @@
 	
 	    // handles swipeup and swipedown
 	    $.event.special.swipeupdown = {
-	        setup: function setup() {
+	        setup: function () {
 	            var thisObject = this;
 	            var $this = $(thisObject);
 	
 	            $this.bind(touchStartEvent, function (event) {
-	                var data = event.originalEvent.touches ? event.originalEvent.touches[0] : event,
+	                var data = event.originalEvent.touches ?
+	                        event.originalEvent.touches[ 0 ] :
+	                        event,
 	                    start = {
-	                    time: new Date().getTime(),
-	                    coords: [data.pageX, data.pageY],
-	                    origin: $(event.target)
-	                },
+	                        time: (new Date()).getTime(),
+	                        coords: [ data.pageX, data.pageY ],
+	                        origin: $(event.target)
+	                    },
 	                    stop;
 	
 	                function moveHandler(event) {
@@ -83,10 +85,12 @@
 	                        return;
 	                    }
 	
-	                    var data = event.originalEvent.touches ? event.originalEvent.touches[0] : event;
+	                    var data = event.originalEvent.touches ?
+	                        event.originalEvent.touches[ 0 ] :
+	                        event;
 	                    stop = {
-	                        time: new Date().getTime(),
-	                        coords: [data.pageX, data.pageY]
+	                        time: (new Date()).getTime(),
+	                        coords: [ data.pageX, data.pageY ]
 	                    };
 	
 	                    // prevent scrolling
@@ -95,39 +99,47 @@
 	                    }
 	                }
 	
-	                $this.bind(touchMoveEvent, moveHandler).one(touchStopEvent, function (event) {
-	                    $this.unbind(touchMoveEvent, moveHandler);
-	                    if (start && stop) {
-	                        if (stop.time - start.time < 1000 && Math.abs(start.coords[1] - stop.coords[1]) > 30 && Math.abs(start.coords[0] - stop.coords[0]) < 75) {
-	                            start.origin.trigger("swipeupdown").trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+	                $this
+	                    .bind(touchMoveEvent, moveHandler)
+	                    .one(touchStopEvent, function (event) {
+	                        $this.unbind(touchMoveEvent, moveHandler);
+	                        if (start && stop) {
+	                            if (stop.time - start.time < 1000 &&
+	                                Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
+	                                Math.abs(start.coords[0] - stop.coords[0]) < 75) {
+	                                start.origin
+	                                    .trigger("swipeupdown")
+	                                    .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+	                            }
 	                        }
-	                    }
-	                    start = stop = undefined;
-	                });
+	                        start = stop = undefined;
+	                    });
 	            });
 	        }
 	    };
 	
-	    //Adds the events to the jQuery events special collection
+	//Adds the events to the jQuery events special collection
 	    $.each({
 	        swipedown: "swipeupdown",
 	        swipeup: "swipeupdown"
 	    }, function (event, sourceEvent) {
 	        $.event.special[event] = {
-	            setup: function setup() {
+	            setup: function () {
 	                $(this).bind(sourceEvent, $.noop);
 	            }
 	        };
 	        //Adds new events shortcuts
-	        $.fn[event] = function (fn) {
-	            return fn ? this.bind(event, fn) : this.trigger(event);
+	        $.fn[ event ] = function( fn ) {
+	            return fn ? this.bind( event, fn ) : this.trigger( event );
 	        };
 	        // jQuery < 1.8
-	        if ($.attrFn) {
-	            $.attrFn[event] = true;
+	        if ( $.attrFn ) {
+	            $.attrFn[ event ] = true;
 	        }
 	    });
+	
 	})();
+	*/
 	
 	var wtfhome = {
 	    screens_lists: ['lookbook', 'shop', 'contact', 'about'],
@@ -184,21 +196,27 @@
 	            wtfhome.scroll_up();
 	        }
 	    });
-	    $("body").on("swipeleft", function () {
+	    $(document).on("swipeleft", function () {
 	        console.log('swipeleft');
 	        wtfhome.scroll_down();
 	    });
-	    $("body").on("swiperight", function () {
+	    $(document).on("swiperight", function () {
 	        console.log('swiperight');
 	        wtfhome.scroll_up();
 	    });
-	    $("body").on("swipeup", function () {
+	    $(document).on("swipeup", function () {
 	        console.log('swipeup');
 	        wtfhome.scroll_up();
 	    });
-	    $("body").on("swipedown", function () {
+	    $(document).on("swipedown", function () {
 	        console.log('swipedown');
 	        wtfhome.scroll_down();
+	    });
+	    $(document).on("scrollstart", function () {
+	        console.log("Started scrolling!");
+	    });
+	    $(document).on("scrollstop", function () {
+	        console.log("Stopped scrolling!");
 	    });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -10497,7 +10515,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n/*\n.wtfhome {\n  background-image: url('../img/orez.png');\n  background-position: center;\n  background-repeat: no-repeat;\n  height: 800px;\n}*/\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\nul {\n  margin: 0;\n}\n/*html, body {\n  margin: 0;\n  overflow: hidden;\n  height: 100%;\n}*/\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif !important;\n}\ni {\n  font-size: 40px;\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n.wtfscreen {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100%;\n}\n.wtfscreen--down {\n  top: 100%;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n}\n", ""]);
+	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\nul {\n  margin: 0;\n}\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif !important;\n}\ni {\n  font-size: 40px;\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n.wtfscreen {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100vh;\n}\n.wtfscreen--down {\n  top: 100vh;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n", ""]);
 	
 	// exports
 
