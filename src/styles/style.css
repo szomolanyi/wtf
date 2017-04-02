@@ -28,9 +28,12 @@
 ul {
   margin: 0;
 }
+html {
+  overflow: hidden;
+}
 body {
   margin:0;
-  /*overflow: hidden;*/
+  overflow: hidden;
   font-family: 'Montserrat', sans-serif !important;
 }
 i {
