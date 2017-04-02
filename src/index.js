@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
 
 require("./styles/style.css");
-require("jquery");
+//require("jquery");
 //require("jquerymobile-swipeupdown");
 require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
