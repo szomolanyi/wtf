@@ -142,92 +142,126 @@
 	*/
 	
 	var wtfhome = {
-	    screens_lists: ['lookbook', 'shop', 'contact', 'about'],
-	    current_screen: 0,
-	    scroll_down: function scroll_down() {
-	        console.log("Idem scrollovat dole " + this.current_screen + " " + this.screens_lists.length + " " + this._scroll_block);
-	        if (this.current_screen >= this.screens_lists.length - 1 || this._scroll_block) return; //last screen
-	        console.log('Som tam');
-	        var cur_screen_id = "#wtfid_" + this.screens_lists[this.current_screen];
-	        var next_screen_id = "#wtfid_" + this.screens_lists[this.current_screen + 1];
-	        $(cur_screen_id).removeClass('wtfscreen--show');
-	        $(cur_screen_id).addClass('wtfscreen--up');
-	        $(next_screen_id).removeClass('wtfscreen--down');
-	        $(next_screen_id).addClass('wtfscreen--show');
-	        this.current_screen++;
-	        this.block_scroll();
-	    },
-	    scroll_up: function scroll_up() {
-	        console.log("Idem scrollovat hore " + this.current_screen + " " + this._scroll_block);
-	        if (this.current_screen === 0 || this._scroll_block) return; //first screen
-	        var cur_screen_id = "#wtfid_" + this.screens_lists[this.current_screen];
-	        var next_screen_id = "#wtfid_" + this.screens_lists[this.current_screen - 1];
-	        $(cur_screen_id).removeClass('wtfscreen--show');
-	        $(cur_screen_id).addClass('wtfscreen--down');
-	        $(next_screen_id).removeClass('wtfscreen--up');
-	        $(next_screen_id).addClass('wtfscreen--show');
-	        this.current_screen--;
-	        this.block_scroll();
-	    },
-	    _scroll_block: false,
-	    block_scroll: function block_scroll() {
-	        this._scroll_block = true;
-	        setTimeout(function () {
-	            wtfhome._scroll_block = false;
-	        }, 500);
-	    }
+	  screens_lists: ['lookbook', 'shop', 'contact', 'about'],
+	  current_screen: 0,
+	  scroll_down: function scroll_down() {
+	    console.log("Idem scrollovat dole " + this.current_screen + " " + this.screens_lists.length + " " + this._scroll_block);
+	    if (this.current_screen >= this.screens_lists.length - 1 || this._scroll_block) return; //last screen
+	    console.log('Som tam');
+	    var cur_screen_id = "#wtfid_" + this.screens_lists[this.current_screen];
+	    var next_screen_id = "#wtfid_" + this.screens_lists[this.current_screen + 1];
+	    $(cur_screen_id).removeClass('wtfscreen--show');
+	    $(cur_screen_id).addClass('wtfscreen--up');
+	    $(next_screen_id).removeClass('wtfscreen--down');
+	    $(next_screen_id).addClass('wtfscreen--show');
+	    this.current_screen++;
+	    this.block_scroll();
+	  },
+	  scroll_up: function scroll_up() {
+	    console.log("Idem scrollovat hore " + this.current_screen + " " + this._scroll_block);
+	    if (this.current_screen === 0 || this._scroll_block) return; //first screen
+	    var cur_screen_id = "#wtfid_" + this.screens_lists[this.current_screen];
+	    var next_screen_id = "#wtfid_" + this.screens_lists[this.current_screen - 1];
+	    $(cur_screen_id).removeClass('wtfscreen--show');
+	    $(cur_screen_id).addClass('wtfscreen--down');
+	    $(next_screen_id).removeClass('wtfscreen--up');
+	    $(next_screen_id).addClass('wtfscreen--show');
+	    this.current_screen--;
+	    this.block_scroll();
+	  },
+	  _scroll_block: false,
+	  block_scroll: function block_scroll() {
+	    this._scroll_block = true;
+	    setTimeout(function () {
+	      wtfhome._scroll_block = false;
+	    }, 500);
+	  }
 	};
 	// Main app
 	
 	$(document).ready(function () {
-	    $(document).keydown(function (e) {
-	        if (e.keyCode === 40) {
-	            // sipka dole
-	            wtfhome.scroll_down();
-	        } else if (e.keyCode === 38) {
-	            wtfhome.scroll_up();
-	        }
-	    });
-	    $('body').on('mousewheel', function (event) {
-	        // $.debounce(function(event) {
-	        if (event.originalEvent.deltaY > 0) {
-	            wtfhome.scroll_down();
-	        } else {
-	            wtfhome.scroll_up();
-	        }
-	    });
-	    $(document).on('scroll', function (e) {
-	        console.log('scroll');
-	        console.log(e);
-	        e.originalEvent.preventDefault();
-	    });
-	    $(document).on("swipeleft", function () {
-	        console.log('swipeleft');
-	        wtfhome.scroll_down();
-	    });
-	    $(document).on("swiperight", function () {
-	        console.log('swiperight');
-	        wtfhome.scroll_up();
-	    });
-	    $(document).on("swipeup", function () {
-	        console.log('swipeup');
-	        wtfhome.scroll_up();
-	    });
-	    $(document).on("swipedown", function () {
-	        console.log('swipedown');
-	        wtfhome.scroll_down();
-	    });
-	    $(document).on("scrollstart", function () {
-	        console.log("Started scrolling!");
-	    });
-	    $(document).on("scrollstop", function () {
-	        console.log("Stopped scrolling!");
-	    });
-	    $('.wtfscreen').on("swipe", function () {
-	        console.log('swipe');
-	        wtfhome.scroll_down();
-	    });
+	  $('#debug').click(turn_debug);
+	  $(document).keydown(function (e) {
+	    if (e.keyCode === 40) {
+	      // sipka dole
+	      dbg('keydown');
+	      wtfhome.scroll_down();
+	    } else if (e.keyCode === 38) {
+	      dbg('keyup');
+	      wtfhome.scroll_up();
+	    }
+	  });
+	  $('body').on('mousewheel', function (event) {
+	    // $.debounce(function(event) {
+	    if (event.originalEvent.deltaY > 0) {
+	      wtfhome.scroll_down();
+	    } else {
+	      wtfhome.scroll_up();
+	    }
+	  });
+	  $(document).on('scroll', function (e) {
+	    console.log('scroll');
+	    console.log(e);
+	    dbg('scroll event');
+	    e.originalEvent.preventDefault();
+	  });
+	  $(document).on("swipeleft", function () {
+	    console.log('swipeleft');
+	    dbg('swipeleft');
+	    wtfhome.scroll_down();
+	  });
+	  $(document).on("swiperight", function () {
+	    console.log('swiperight');
+	    dbg('swiperight');
+	    wtfhome.scroll_up();
+	  });
+	  $(document).on("swipeup", function () {
+	    console.log('swipeup');
+	    dbg('swipeup');
+	    wtfhome.scroll_up();
+	  });
+	  $(document).on("swipedown", function () {
+	    console.log('swipedown');
+	    dbg('swipedown');
+	    wtfhome.scroll_down();
+	  });
+	  $(document).on("scrollstart", function () {
+	    dbg('scrollstart');
+	    console.log("Started scrolling!");
+	  });
+	  $(document).on("scrollstop", function () {
+	    dbg('scrollstop');
+	    console.log("Stopped scrolling!");
+	  });
+	  $('.wtfscreen').on("swipe", function () {
+	    console.log('swipe');
+	    dbg('swipe');
+	    wtfhome.scroll_down();
+	  });
+	  document.ontouchmove = function (event) {
+	    console.log(event);
+	    event.preventDefault();
+	    dbg('ontouchmove');
+	  };
+	  dbg('On load successfull');
 	});
+	
+	var debugOn = false;
+	
+	function turn_debug() {
+	  if (debugOn) {
+	    $('#debug').removeClass('pop');
+	    debugOn = false;
+	  } else {
+	    $('#debug').addClass('pop');
+	    debugOn = true;
+	  }
+	}
+	
+	function dbg(msg) {
+	  var p = $('<p>').html(msg);
+	  $('#debug').append(p);
+	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
@@ -10524,7 +10558,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\nul {\n  margin: 0;\n}\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif !important;\n}\ni {\n  font-size: 40px;\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n.wtfscreen {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100vh;\n}\n.wtfscreen--down {\n  top: 100vh;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n", ""]);
+	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\nul {\n  margin: 0;\n}\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif !important;\n}\ni {\n  font-size: 40px;\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n.wtfscreen {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100vh;\n}\n.wtfscreen--down {\n  top: 100vh;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(5) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n#debug {\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  margin-left: 10px;\n  width: 45px;\n  height: 18px;\n  border: 3px solid rgba(131, 45, 43, 0.7);\n  transition: all 1s;\n  /*, max-width 2s, height 2s;*/\n}\n#debug.pop {\n  width: 400px;\n  height: auto;\n}\n#debug > p {\n  color: rgba(0, 0, 0, 0.7);\n  margin: 0;\n}\n#debug > p:nth-child(odd) {\n  background-color: rgba(135, 78, 77, 0.7);\n}\n#debug > p:nth-child(even) {\n  background-color: rgba(193, 145, 144, 0.7);\n}\n", ""]);
 	
 	// exports
 
