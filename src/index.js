@@ -198,6 +198,17 @@ $(document).ready(function(){
     event.preventDefault();
     dbg('ontouchmove');
   };
+  window.addEventListener("touchstart", function(event){
+    dbg('touchstart1');
+    if (event.target.tagName=="HTML" || event.target.tagName=="BODY") {
+      dbg('touchstart2');
+      event.preventDefault();
+    }
+  }, false);
+  window.addEventListener("scroll", function(){
+    dbg("scrollnew");
+    window.scrollTo(0,0);
+  }, false);
   dbg('On load successfull');
 });
 
