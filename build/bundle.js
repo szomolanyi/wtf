@@ -245,15 +245,21 @@
 	    event.preventDefault();
 	    dbg('ontouchmove');
 	  };
+	  window.addEventListener("touchmove", function (event) {
+	    dbg("touchmnew");
+	    event.preventDefault();
+	  }, false);
 	  window.addEventListener("touchstart", function (event) {
 	    dbg('touchstart1 ' + event.target.tagName);
 	    if (event.target.tagName == "HTML" || event.target.tagName == "BODY") {
 	      dbg('touchstart2');
 	      event.preventDefault();
 	    }
+	    event.preventDefault();
 	  }, false);
 	  window.addEventListener("scroll", function () {
 	    dbg("scrollnew");
+	    wtfhome.scroll_down();
 	    window.scrollTo(0, 0);
 	  }, false);
 	  dbg('On load successfull');
