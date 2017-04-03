@@ -186,6 +186,23 @@
 	  var mc = new Hammer(myElement);
 	  mc.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function (ev) {
 	    dbg(ev.type + " gesture detected.");
+	    if (ev.type === 'panleft') {
+	      wtfhome.scroll_up();
+	    }
+	    if (ev.type === 'panright') {
+	      wtfhome.scroll_down();
+	    }
+	  });
+	  var myElement1 = document.getElementById('wtfid_shop');
+	  var mc1 = new Hammer(myElement1);
+	  mc1.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function (ev) {
+	    dbg(ev.type + " gesture detected.");
+	    if (ev.type === 'panleft') {
+	      wtfhome.scroll_up();
+	    }
+	    if (ev.type === 'panright') {
+	      wtfhome.scroll_down();
+	    }
 	  });
 	  $(document).keydown(function (e) {
 	    if (e.keyCode === 40) {
@@ -213,61 +230,63 @@
 	    e.originalEvent.preventDefault();
 	  });
 	  */
-	  $(document).on("swipeleft", function () {
+	  /*
+	  $(document).on("swipeleft",function(){
 	    console.log('swipeleft');
 	    dbg('swipeleft');
 	    wtfhome.scroll_down();
 	  });
-	  $(document).on("swiperight", function () {
+	  $(document).on("swiperight",function(){
 	    console.log('swiperight');
 	    dbg('swiperight');
 	    wtfhome.scroll_up();
 	  });
-	  $(document).on("swipeup", function () {
+	  $(document).on("swipeup",function(){
 	    console.log('swipeup');
 	    dbg('swipeup');
 	    wtfhome.scroll_up();
 	  });
-	  $(document).on("swipedown", function () {
+	  $(document).on("swipedown",function(){
 	    console.log('swipedown');
 	    dbg('swipedown');
 	    wtfhome.scroll_down();
 	  });
-	  $(document).on("scrollstart", function () {
+	  $(document).on("scrollstart",function(){
 	    dbg('scrollstart');
 	    console.log("Started scrolling!");
 	  });
-	  $(document).on("scrollstop", function () {
+	  $(document).on("scrollstop",function(){
 	    dbg('scrollstop');
 	    console.log("Stopped scrolling!");
 	  });
-	  $('.wtfscreen').on("swipe", function () {
+	  $('.wtfscreen').on("swipe",function(){
 	    console.log('swipe');
 	    dbg('swipe');
 	    wtfhome.scroll_down();
 	  });
-	  document.ontouchmove = function (event) {
+	  document.ontouchmove = function(event) {
 	    console.log(event);
 	    event.preventDefault();
 	    dbg('ontouchmove');
 	  };
-	  window.addEventListener("touchmove", function (event) {
+	  window.addEventListener("touchmove", function(event) {
 	    dbg("touchmnew");
 	    event.preventDefault();
 	  }, false);
-	  window.addEventListener("touchstart", function (event) {
-	    dbg('touchstart1 ' + event.target.tagName);
-	    if (event.target.tagName == "HTML" || event.target.tagName == "BODY") {
+	  window.addEventListener("touchstart", function(event){
+	    dbg('touchstart1 '+event.target.tagName);
+	    if (event.target.tagName=="HTML" || event.target.tagName=="BODY") {
 	      dbg('touchstart2');
 	      event.preventDefault();
 	    }
 	    event.preventDefault();
 	  }, false);
-	  window.addEventListener("scroll", function () {
+	  window.addEventListener("scroll", function(){
 	    dbg("scrollnew");
 	    wtfhome.scroll_down();
-	    window.scrollTo(0, 0);
+	    window.scrollTo(0,0);
 	  }, false);
+	  */
 	  dbg('On load successfull');
 	});
 	
