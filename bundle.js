@@ -194,10 +194,10 @@
 	    if (ev.type === 'panright') {
 	      wtfhome.scroll_down();
 	    }
-	    if (ev.type === 'swipeup') {
+	    if (ev.type === 'swipedown') {
 	      wtfhome.scroll_up();
 	    }
-	    if (ev.type === 'swipedown') {
+	    if (ev.type === 'swipeup') {
 	      wtfhome.scroll_down();
 	    }
 	  });
@@ -284,20 +284,20 @@
 	    console.log(event);
 	    event.preventDefault();
 	    dbg('ontouchmove');
-	  };
-	  window.addEventListener("touchmove", function(event) {
+	  };*/
+	  window.addEventListener("touchmove", function (event) {
 	    dbg("touchmnew");
 	    event.preventDefault();
 	  }, false);
-	  window.addEventListener("touchstart", function(event){
-	    dbg('touchstart1 '+event.target.tagName);
-	    if (event.target.tagName=="HTML" || event.target.tagName=="BODY") {
+	  window.addEventListener("touchstart", function (event) {
+	    dbg('touchstart1 ' + event.target.tagName);
+	    if (event.target.tagName == "HTML" || event.target.tagName == "BODY") {
 	      dbg('touchstart2');
 	      event.preventDefault();
 	    }
 	    event.preventDefault();
 	  }, false);
-	  */
+	
 	  window.addEventListener("scroll", function () {
 	    dbg("scrollnew");
 	    window.scrollTo(0, 0);
