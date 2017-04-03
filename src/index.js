@@ -138,6 +138,8 @@ $(document).ready(function(){
   $('#debug').click(turn_debug);
   var myElement = document.getElementById('wtfid_lookbook');
   var mc = new Hammer(myElement);
+  mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+  mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   mc.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function(ev) {
     dbg(ev.type +" gesture detected.");
     if (ev.type === 'panleft') {
@@ -146,15 +148,29 @@ $(document).ready(function(){
     if (ev.type === 'panright') {
       wtfhome.scroll_down();
     }
+    if (ev.type === 'swipeup') {
+      wtfhome.scroll_up();
+    }
+    if (ev.type === 'swipedown') {
+      wtfhome.scroll_down();
+    }
   });
   var myElement1 = document.getElementById('wtfid_shop');
   var mc1 = new Hammer(myElement1);
+  mc1.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+  mc1.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   mc1.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function(ev) {
     dbg(ev.type +" gesture detected.");
     if (ev.type === 'panleft') {
       wtfhome.scroll_up();
     }
     if (ev.type === 'panright') {
+      wtfhome.scroll_down();
+    }
+    if (ev.type === 'swipeup') {
+      wtfhome.scroll_up();
+    }
+    if (ev.type === 'swipedown') {
       wtfhome.scroll_down();
     }
   });
@@ -234,12 +250,11 @@ $(document).ready(function(){
     }
     event.preventDefault();
   }, false);
+  */
   window.addEventListener("scroll", function(){
     dbg("scrollnew");
-    wtfhome.scroll_down();
     window.scrollTo(0,0);
   }, false);
-  */
   dbg('On load successfull');
 });
 
