@@ -148,10 +148,10 @@ $(document).ready(function(){
     if (ev.type === 'panright') {
       wtfhome.scroll_down();
     }
-    if (ev.type === 'swipeup') {
+    if (ev.type === 'swipedown') {
       wtfhome.scroll_up();
     }
-    if (ev.type === 'swipedown') {
+    if (ev.type === 'swipeup') {
       wtfhome.scroll_down();
     }
   });
@@ -237,7 +237,7 @@ $(document).ready(function(){
     console.log(event);
     event.preventDefault();
     dbg('ontouchmove');
-  };
+  };*/
   window.addEventListener("touchmove", function(event) {
     dbg("touchmnew");
     event.preventDefault();
@@ -250,7 +250,7 @@ $(document).ready(function(){
     }
     event.preventDefault();
   }, false);
-  */
+
   window.addEventListener("scroll", function(){
     dbg("scrollnew");
     window.scrollTo(0,0);
