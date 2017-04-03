@@ -3,6 +3,7 @@
 require("./styles/style.css");
 require("jquery");
 //require("jquerymobile-swipeupdown");
+require("hammerjs");
 require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
 require("./assets/logo.png");
@@ -135,6 +136,11 @@ let wtfhome = {
 
 $(document).ready(function(){
   $('#debug').click(turn_debug);
+  var myElement = document.getElementById('wtfid_lookbook');
+  var mc = new Hammer(myElement);
+  mc.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function(ev) {
+    dbg(ev.type +" gesture detected.");
+  });
   $(document).keydown(function(e) {
     if (e.keyCode === 40) { // sipka dole
       dbg('keydown');
