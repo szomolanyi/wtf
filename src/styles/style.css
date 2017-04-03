@@ -32,6 +32,7 @@ body {
   margin:0;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif !important;
+  position: relative;
 }
 i {
   font-size: 40px;
