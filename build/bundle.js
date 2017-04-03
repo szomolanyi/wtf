@@ -213,10 +213,10 @@
 	    if (ev.type === 'panright') {
 	      wtfhome.scroll_down();
 	    }
-	    if (ev.type === 'swipeup') {
+	    if (ev.type === 'swipedown') {
 	      wtfhome.scroll_up();
 	    }
-	    if (ev.type === 'swipedown') {
+	    if (ev.type === 'swipeup') {
 	      wtfhome.scroll_down();
 	    }
 	  });
