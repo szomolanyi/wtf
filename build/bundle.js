@@ -246,7 +246,7 @@
 	    dbg('ontouchmove');
 	  };
 	  window.addEventListener("touchstart", function (event) {
-	    dbg('touchstart1');
+	    dbg('touchstart1 ' + event.target.tagName);
 	    if (event.target.tagName == "HTML" || event.target.tagName == "BODY") {
 	      dbg('touchstart2');
 	      event.preventDefault();
