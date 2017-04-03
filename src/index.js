@@ -140,6 +140,23 @@ $(document).ready(function(){
   var mc = new Hammer(myElement);
   mc.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function(ev) {
     dbg(ev.type +" gesture detected.");
+    if (ev.type === 'panleft') {
+      wtfhome.scroll_up();
+    }
+    if (ev.type === 'panright') {
+      wtfhome.scroll_down();
+    }
+  });
+  var myElement1 = document.getElementById('wtfid_shop');
+  var mc1 = new Hammer(myElement1);
+  mc1.on("panleft panright tap press swipeleft swiperight swipeup swipedown", function(ev) {
+    dbg(ev.type +" gesture detected.");
+    if (ev.type === 'panleft') {
+      wtfhome.scroll_up();
+    }
+    if (ev.type === 'panright') {
+      wtfhome.scroll_down();
+    }
   });
   $(document).keydown(function(e) {
     if (e.keyCode === 40) { // sipka dole
@@ -166,6 +183,7 @@ $(document).ready(function(){
     e.originalEvent.preventDefault();
   });
   */
+  /*
   $(document).on("swipeleft",function(){
     console.log('swipeleft');
     dbg('swipeleft');
@@ -221,6 +239,7 @@ $(document).ready(function(){
     wtfhome.scroll_down();
     window.scrollTo(0,0);
   }, false);
+  */
   dbg('On load successfull');
 });
 
