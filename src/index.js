@@ -134,11 +134,14 @@ let wtfhome = {
 // Main app
 
 $(document).ready(function(){
+  $('#debug').click(turn_debug);
   $(document).keydown(function(e) {
     if (e.keyCode === 40) { // sipka dole
+      dbg('keydown');
       wtfhome.scroll_down();
     }
     else if (e.keyCode === 38) {
+      dbg('keyup');
       wtfhome.scroll_up();
     }
   });
@@ -152,32 +155,64 @@ $(document).ready(function(){
   $(document).on('scroll', function(e) {
     console.log('scroll');
     console.log(e);
+    dbg('scroll event');
     e.originalEvent.preventDefault();
   });
   $(document).on("swipeleft",function(){
     console.log('swipeleft');
+    dbg('swipeleft');
     wtfhome.scroll_down();
   });
   $(document).on("swiperight",function(){
     console.log('swiperight');
+    dbg('swiperight');
     wtfhome.scroll_up();
   });
   $(document).on("swipeup",function(){
     console.log('swipeup');
+    dbg('swipeup');
     wtfhome.scroll_up();
   });
   $(document).on("swipedown",function(){
     console.log('swipedown');
+    dbg('swipedown');
     wtfhome.scroll_down();
   });
   $(document).on("scrollstart",function(){
+    dbg('scrollstart');
     console.log("Started scrolling!");
   });
   $(document).on("scrollstop",function(){
+    dbg('scrollstop');
     console.log("Stopped scrolling!");
   });
   $('.wtfscreen').on("swipe",function(){
     console.log('swipe');
+    dbg('swipe');
     wtfhome.scroll_down();
   });
+  document.ontouchmove = function(event) {
+    console.log(event);
+    event.preventDefault();
+    dbg('ontouchmove');
+  };
+  dbg('On load successfull');
 });
+
+let debugOn = false;
+
+function turn_debug() {
+  if (debugOn) {
+    $('#debug').removeClass('pop');
+    debugOn=false;
+  }
+  else {
+    $('#debug').addClass('pop');
+    debugOn=true;
+  }
+}
+
+function dbg(msg) {
+  let p=$('<p>').html(msg);
+  $('#debug').append(p);
+}
