@@ -199,12 +199,14 @@
 	      wtfhome.scroll_up();
 	    }
 	  });
-	  $(document).on('scroll', function (e) {
+	  /*
+	  $(document).on('scroll', function(e) {
 	    console.log('scroll');
 	    console.log(e);
 	    dbg('scroll event');
 	    e.originalEvent.preventDefault();
 	  });
+	  */
 	  $(document).on("swipeleft", function () {
 	    console.log('swipeleft');
 	    dbg('swipeleft');
