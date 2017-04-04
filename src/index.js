@@ -1,7 +1,6 @@
 /*jshint esversion:6*/
 
 require("jquery");
-//require("jquerymobile-swipeupdown");
 require("hammerjs");
 require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
