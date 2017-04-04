@@ -6,6 +6,10 @@ require("material-design-lite");
 require(__dirname+"/../node_modules/material-design-lite/material.css");
 require("./assets/logo.png");
 
+require("./assets/facebook.png");
+require("./assets/youtube.png");
+require("./assets/instagram.png");
+
 let fdbg = require("./fdbg");
 
 require("./styles/style.css");

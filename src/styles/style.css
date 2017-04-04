@@ -3,7 +3,7 @@ body {
   margin:0;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
-  position: relative;
+  position: relative; /* import to disable scrolling */
 }
 a {
   text-decoration: none;
@@ -46,6 +46,7 @@ a:hover {
   text-decoration: none;
 }
 /* END ---------------------- navigacia end ------------- */
+/* START -------------------- scroll jump pre main page ----- */
 .wtfscreen {
   width: 100vw;
   height: 100vh;
@@ -68,3 +69,4 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* END -------------------- scroll jump pre main page ----- */
