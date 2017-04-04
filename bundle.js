@@ -103,18 +103,19 @@
 	  /*$('.fdbg').on('click', function(){
 	    console.log('fdbg click');
 	  });*/
-	  var myElement = document.getElementById('wtfid_lookbook');
+	  //var myElement = document.getElementById('wtfid_lookbook');
+	  var myElement = document.body;
 	  var mc = new Hammer(myElement);
-	  mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+	  //mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 	  mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 	  mc.on("swipeup swipedown", function (ev) {
 	    fdbg.dbg(ev.type + " gesture detected.");
-	    if (ev.type === 'panleft') {
+	    /*if (ev.type === 'panleft') {
 	      wtfhome.scroll_up();
 	    }
 	    if (ev.type === 'panright') {
 	      wtfhome.scroll_down();
-	    }
+	    }*/
 	    if (ev.type === 'swipedown') {
 	      wtfhome.scroll_up();
 	    }
@@ -122,12 +123,12 @@
 	      wtfhome.scroll_down();
 	    }
 	  });
-	  var myElement1 = document.getElementById('wtfid_shop');
+	  /*var myElement1 = document.getElementById('wtfid_shop');
 	  var mc1 = new Hammer(myElement1);
 	  mc1.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 	  mc1.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-	  mc1.on("swipeup swipedown", function (ev) {
-	    fdbg.dbg(ev.type + " gesture detected.");
+	  mc1.on("swipeup swipedown", function(ev) {
+	    fdbg.dbg(ev.type +" gesture detected.");
 	    if (ev.type === 'panleft') {
 	      wtfhome.scroll_up();
 	    }
@@ -140,7 +141,7 @@
 	    if (ev.type === 'swipeup') {
 	      wtfhome.scroll_down();
 	    }
-	  });
+	  });*/
 	  $(document).keydown(function (e) {
 	    if (e.keyCode === 40) {
 	      // sipka dole
