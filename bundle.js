@@ -49,16 +49,19 @@
 	/*jshint esversion:6*/
 	
 	__webpack_require__(1);
-	//require("jquerymobile-swipeupdown");
 	__webpack_require__(2);
 	__webpack_require__(3);
 	__webpack_require__(4);
 	__webpack_require__(8);
 	
-	var fdbg = __webpack_require__(9);
-	
+	__webpack_require__(9);
 	__webpack_require__(10);
+	__webpack_require__(11);
+	
+	var fdbg = __webpack_require__(12);
+	
 	__webpack_require__(13);
+	__webpack_require__(16);
 	
 	var wtfhome = {
 	  screens_lists: ['lookbook', 'shop', 'contact', 'about'],
@@ -100,22 +103,11 @@
 	
 	$(document).ready(function () {
 	  fdbg.init();
-	  /*$('.fdbg').on('click', function(){
-	    console.log('fdbg click');
-	  });*/
-	  //var myElement = document.getElementById('wtfid_lookbook');
 	  var myElement = document.body;
 	  var mc = new Hammer(myElement);
-	  //mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 	  mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 	  mc.on("swipeup swipedown", function (ev) {
 	    fdbg.dbg(ev.type + " gesture detected.");
-	    /*if (ev.type === 'panleft') {
-	      wtfhome.scroll_up();
-	    }
-	    if (ev.type === 'panright') {
-	      wtfhome.scroll_down();
-	    }*/
 	    if (ev.type === 'swipedown') {
 	      wtfhome.scroll_up();
 	    }
@@ -123,25 +115,6 @@
 	      wtfhome.scroll_down();
 	    }
 	  });
-	  /*var myElement1 = document.getElementById('wtfid_shop');
-	  var mc1 = new Hammer(myElement1);
-	  mc1.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-	  mc1.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-	  mc1.on("swipeup swipedown", function(ev) {
-	    fdbg.dbg(ev.type +" gesture detected.");
-	    if (ev.type === 'panleft') {
-	      wtfhome.scroll_up();
-	    }
-	    if (ev.type === 'panright') {
-	      wtfhome.scroll_down();
-	    }
-	    if (ev.type === 'swipedown') {
-	      wtfhome.scroll_up();
-	    }
-	    if (ev.type === 'swipeup') {
-	      wtfhome.scroll_down();
-	    }
-	  });*/
 	  $(document).keydown(function (e) {
 	    if (e.keyCode === 40) {
 	      // sipka dole
@@ -174,10 +147,9 @@
 	    }
 	    //event.preventDefault();
 	  }, false);
-	
 	  window.addEventListener("scroll", function () {
 	    console.log('scrool handler');
-	    fdbg.dbg("scrollnew");
+	    fdbg.dbg("scroll");
 	    window.scrollTo(0, 0);
 	  }, false);
 	  fdbg.dbg('On load successfull');
@@ -13466,6 +13438,24 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__.p + "facebook.png";
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "youtube.png";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "instagram.png";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 	
 	/*jshint esversion:6*/
@@ -13495,13 +13485,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 10 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(14);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -13521,7 +13511,7 @@
 	}
 
 /***/ },
-/* 11 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -13529,25 +13519,25 @@
 	
 	
 	// module
-	exports.push([module.id, ".wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtflookbook--v1 {\n  margin-left: 150px;\n}\n.wtflookbook--v2 {\n  display: flex;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\nul {\n  margin: 0;\n}\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif;\n  position: relative;\n}\ni {\n  font-size: 40px;\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n.wtfnav__link--transition {\n  transition: color 0.5s ease-in;\n}\n.wtfnav__link--black {\n  color: black;\n}\n.wtfnav__link--white {\n  color: white;\n}\n.wtfscreen {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100vh;\n}\n.wtfscreen--down {\n  top: 100vh;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(12) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n", ""]);
+	exports.push([module.id, "/* START ----------------------- basic setup -------- */\nbody {\n  margin:0;\n  overflow: hidden;\n  font-family: 'Montserrat', sans-serif;\n  position: relative; /* import to disable scrolling */\n}\na {\n  text-decoration: none;\n}\na:focus {\n  outline: none;\n  text-decoration: underline;\n}\na:hover {\n    text-decoration: underline;\n}\n/* END----------------------- basic setup -------- */\n/* START ---------------- navigacia ------------- */\n.wtfnav {\n  background-color : transparent;\n}\n.wtfnav--white {\n  color: white;\n}\n.wtfnav--fixed {\n  position: fixed;\n}\n.wtfnav__item {\n  padding-bottom: 25px;\n  padding-top: 25px;\n  list-style-type: none;\n  font-size: 20px;\n  text-align: center;\n}\n.wtfnav--logo {\n  width : 200px;\n  margin-left: auto;\n  margin-right: auto;\n}\n.wtfnav ul {\n  margin: 0;\n  padding-left: 0;\n}\n.wtfnav__link {\n  text-decoration: none;\n}\n/* END ---------------------- navigacia end ------------- */\n/* START -------------------- scroll jump pre main page ----- */\n.wtfscreen {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  transition: top 400ms ease-in-out;\n  overflow: hidden;\n}\n.wtfscreen--show {\n  top: 0;\n}\n.wtfscreen--up {\n  top: -100vh;\n}\n.wtfscreen--down {\n  top: 100vh;\n}\n.wtfscreen--bgimg {\n  background-image: url(" + __webpack_require__(15) + ");\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n/* END -------------------- scroll jump pre main page ----- */\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "foto.jpg";
 
 /***/ },
-/* 13 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(14);
+	var content = __webpack_require__(17);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -13567,7 +13557,7 @@
 	}
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
